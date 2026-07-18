@@ -1,0 +1,70 @@
+class StatusHeroi:
+    def __init__(self, nome_heroi):
+        self.nome_heroi = nome_heroi
+        self.nivel = "Ferro"
+        self.vida = 5
+        self.energia = 5
+        self.xp = 0
+
+    def calcular_nivel(self):
+        if self.xp <= 1000:
+            return "Ferro"
+        elif self.xp <= 2000:
+            return "Bronze"
+        elif self.xp <= 5000:
+            return "Prata"
+        elif self.xp <= 7000:
+            return "Ouro"
+        elif self.xp <= 8000:
+            return "Platina"
+        elif self.xp <= 9000:
+            return "Ascendente"
+        elif self.xp <= 10000:
+            return "Imortal"
+        else:
+            return "Radiante"
+
+    def treinar(self):
+        self.xp += 1000
+        self.vida += 5
+        self.energia += 5
+        self.nivel = self.calcular_nivel()
+
+        print(f"\n{self.nome_heroi} treinou!")
+        print(f"Nível: {self.nivel}")
+        print(f"XP: {self.xp}")
+        print(f"Vida: {self.vida}")
+        print(f"Energia: {self.energia}")
+
+
+print("Bem-vindo à tela de status do herói!")
+
+nome = input("Digite o nome do herói: ")
+
+heroi = StatusHeroi(nome)
+
+while True:
+    print("\n1 - Ver status")
+    print("2 - Treinar")
+    print("3 - Sair")
+
+    opcao = int(input("Escolha: "))
+
+    match opcao:
+        case 1:
+            print(f"\nNome: {heroi.nome_heroi}")
+            print(f"Nível: {heroi.nivel}")
+            print(f"XP: {heroi.xp}")
+            print(f"Vida: {heroi.vida}")
+            print(f"Energia: {heroi.energia}")
+
+        case 2:
+            heroi.treinar()
+
+        case 3:
+            print("Até logo!")
+            break
+
+        case _:
+            print("Opção inválida!")
+        
